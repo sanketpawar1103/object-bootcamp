@@ -82,7 +82,7 @@ class ChanceCalculatorTest {
         }
     }
 
-    @Disabled
+    @Test
     void shouldGiveAChanceOfGetting3WhenADiceIsRolled() {
         List<Integer> possibilityList = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6));
 

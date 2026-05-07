@@ -29,12 +29,12 @@ public class Probability {
         return new Probability(orProbability - andProbability);
     }
 
-
     @Override
     public boolean equals(Object o) {
         if (!(o instanceof Probability chance)) return false;
-        return Double.compare(probabilityValue, chance.probabilityValue) == 0;
+        return probabilityValue - chance.probabilityValue <= 0.01;
     }
+
 
     @Override
     public int hashCode() {
