@@ -1,13 +1,13 @@
-import com.tw.bootcamp.p1.RectangleDimension;
 import com.tw.bootcamp.p1.Rectangle;
 
 public class Main {
     static void main() {
-        RectangleDimension rectangleDimension = new RectangleDimension(5, 3);
+        Rectangle rectangle = Rectangle.createRectangle(2, 3);
+        Rectangle square = Rectangle.createSquare(10);
 
-        Rectangle rectangle = new Rectangle(rectangleDimension);
-    }
-
-    public void greet() {
+        System.out.println(rectangle.calculateArea());
+        System.out.println(rectangle.calculatePerimeter());
+        System.out.println(square.calculatePerimeter());
+        System.out.println(square.calculateArea());
     }
 }
