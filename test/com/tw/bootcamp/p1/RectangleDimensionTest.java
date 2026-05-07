@@ -6,6 +6,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class RectangleDimensionTest {
     @Test
+    void calculateArea() {
+        RectangleDimension rectangleDimension1 = new RectangleDimension(4, 5);
+        assertEquals(20, rectangleDimension1.area());
+    }
+
+    @Test
     void shouldCreateDimensionsForRectangle() {
         RectangleDimension rectangleDimension1 = new RectangleDimension(4, 5);
         RectangleDimension rectangleDimension2 = new RectangleDimension(4, 5);

@@ -21,4 +21,8 @@ public class Rectangle {
     public int hashCode() {
         return Objects.hashCode(rectangleDimension);
     }
+
+    public int calculateArea() {
+        return rectangleDimension.area();
+    }
 }

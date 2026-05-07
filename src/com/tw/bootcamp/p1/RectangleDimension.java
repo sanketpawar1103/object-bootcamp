@@ -22,4 +22,8 @@ public class RectangleDimension {
     public int hashCode() {
         return Objects.hash(length, breadth);
     }
+
+    public int area() {
+        return length * breadth;
+    }
 }
