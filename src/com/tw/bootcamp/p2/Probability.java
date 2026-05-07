@@ -10,23 +10,34 @@ public class Probability {
     }
 
     public static Probability createProbability(double probability) throws InvalidProbabilityException {
-        if (probability > 1.0) {
+        if (probability > 1.0 || probability < 0.0) {
             throw new InvalidProbabilityException("Invalid Probability");
         }
 
         return new Probability(probability);
     }
 
-    public Probability probabilityOfNotGetting() {
+    public Probability not() {
         return new Probability(1.0 - this.probabilityValue);
     }
 
-    public Probability atLeastOnce() {
-        double notOfProbability = probabilityOfNotGetting().probabilityValue;
-        double orProbability = probabilityValue + notOfProbability;
-        double andProbability = probabilityValue * notOfProbability;
+    private Probability or(Probability notOfProbability) {
+        return new Probability(probabilityValue + notOfProbability.probabilityValue);
+    }
 
-        return new Probability(orProbability - andProbability);
+    private Probability and(Probability notOfProbability) {
+        return new Probability(probabilityValue * notOfProbability.probabilityValue);
+    }
+
+    public Probability atLeastOnce() {
+        Probability orProbability = or(not());
+        Probability andProbability = and(not());
+
+        return new Probability(orProbability.probabilityValue - andProbability.probabilityValue);
+    }
+
+    public Probability deMorgansLaw() {
+        return and(not()).not();
     }
 
     @Override
@@ -34,7 +45,6 @@ public class Probability {
         if (!(o instanceof Probability chance)) return false;
         return probabilityValue - chance.probabilityValue <= 0.01;
     }
-
 
     @Override
     public int hashCode() {
@@ -44,10 +54,5 @@ public class Probability {
     @Override
     public String toString() {
         return "Chance is %f".formatted(probabilityValue);
-    }
-
-    public Probability deMorgansLaw() {
-        return new Probability(probabilityOfNotGetting().probabilityValue * probabilityValue)
-                .probabilityOfNotGetting();
     }
 }
