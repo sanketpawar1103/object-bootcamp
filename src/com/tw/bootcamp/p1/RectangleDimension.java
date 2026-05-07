@@ -2,8 +2,7 @@ package com.tw.bootcamp.p1;
 
 import java.util.Objects;
 
-public class RectangleDimension {
-
+public class RectangleDimension implements QuadrilateralDimension {
     private final int length;
     private final int breadth;
 
@@ -23,10 +22,12 @@ public class RectangleDimension {
         return Objects.hash(length, breadth);
     }
 
+    @Override
     public int area() {
         return length * breadth;
     }
 
+    @Override
     public int perimeter() {
         return 2 * (length + breadth);
     }

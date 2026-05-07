@@ -4,10 +4,10 @@ import java.util.Objects;
 
 public class Rectangle {
 
-    private final RectangleDimension rectangleDimension;
+    private final QuadrilateralDimension rectangleDimension;
 
 
-    public Rectangle(RectangleDimension rectangleDimension) {
+    public Rectangle(QuadrilateralDimension rectangleDimension) {
         this.rectangleDimension = rectangleDimension;
     }
 
@@ -26,7 +26,7 @@ public class Rectangle {
         return rectangleDimension.area();
     }
 
-        public int calculatePerimeter() {
+    public int calculatePerimeter() {
         return rectangleDimension.perimeter();
     }
 }
