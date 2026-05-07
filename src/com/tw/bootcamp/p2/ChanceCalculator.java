@@ -5,16 +5,16 @@ import java.util.List;
 import java.util.Objects;
 
 public class ChanceCalculator<T> {
-    private final List<T> possiblilities;
+    private final List<T> possibilities;
 
-    public ChanceCalculator(List<T> possiblilities) {
-        this.possiblilities = possiblilities;
+    public ChanceCalculator(List<T> possibilities) {
+        this.possibilities = possibilities;
     }
 
     public double chanceOfGetting(T element) {
-        int occurrences = Collections.frequency(possiblilities, element);
+        int occurrences = Collections.frequency(possibilities, element);
 
-        return (double) occurrences * 1 / possiblilities.size();
+        return (double) occurrences * 1 / possibilities.size();
     }
 
     public double chanceOfNotGetting(T element) {
@@ -24,11 +24,11 @@ public class ChanceCalculator<T> {
     @Override
     public boolean equals(Object o) {
         if (!(o instanceof ChanceCalculator<?> coin)) return false;
-        return Objects.equals(possiblilities, coin.possiblilities);
+        return Objects.equals(possibilities, coin.possibilities);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(possiblilities);
+        return Objects.hashCode(possibilities);
     }
 }
