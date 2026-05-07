@@ -3,7 +3,6 @@ package com.tw.bootcamp.p2;
 import java.util.Objects;
 
 public class Probability {
-
     private final double probability;
 
     private Probability(double decimal) {
@@ -16,6 +15,18 @@ public class Probability {
         }
 
         return new Probability(probability);
+    }
+
+    public Probability probabilityOfNotGetting() {
+        return new Probability(1.0 - this.probability);
+    }
+
+    public Probability atLeastOnce() {
+        double notOfProbability = probabilityOfNotGetting().probability;
+        double orProbability = probability + notOfProbability;
+        double andProbability = probability * notOfProbability;
+
+        return new Probability(orProbability - andProbability);
     }
 
     @Override
@@ -31,6 +42,6 @@ public class Probability {
 
     @Override
     public String toString() {
-        return "Chance is %f".formatted(probability) ;
+        return "Chance is %f".formatted(probability);
     }
 }

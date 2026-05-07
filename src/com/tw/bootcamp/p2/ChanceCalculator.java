@@ -17,10 +17,6 @@ public class ChanceCalculator<T> {
         return (double) occurrences * 1 / possibilities.size();
     }
 
-    public double chanceOfNotGetting(T element) {
-        return 1.0 - chanceOfGetting(element);
-    }
-
     @Override
     public boolean equals(Object o) {
         if (!(o instanceof ChanceCalculator<?> coin)) return false;
