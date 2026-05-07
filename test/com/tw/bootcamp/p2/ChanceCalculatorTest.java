@@ -24,7 +24,7 @@ class ChanceCalculatorTest {
         possibilityList.add("Tails");
 
         ChanceCalculator coin1 = new ChanceCalculator(possibilityList);
-        assertEquals(0.5, coin1.chanceOfGetting());
+        assertEquals(0.5, coin1.chanceOfGetting("Tails"));
     }
 
     @Test
@@ -34,6 +34,16 @@ class ChanceCalculatorTest {
         possibilityList.add("Tails");
 
         ChanceCalculator coin1 = new ChanceCalculator(possibilityList);
-        assertEquals(0.5, coin1.chanceOfNotGetting());
+        assertEquals(0.5, coin1.chanceOfNotGetting("Tails"));
+    }
+
+    @Test
+    void shouldReturnProbability0() {
+        List<String> possibilityList = new ArrayList<>();
+        possibilityList.add("Heads");
+        possibilityList.add("Tails");
+
+        ChanceCalculator coin1 = new ChanceCalculator(possibilityList);
+        assertEquals(1.0, coin1.chanceOfNotGetting("Hello"));
     }
 }

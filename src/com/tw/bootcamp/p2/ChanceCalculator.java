@@ -1,5 +1,6 @@
 package com.tw.bootcamp.p2;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -10,12 +11,14 @@ public class ChanceCalculator<T> {
         this.possiblilities = possiblilities;
     }
 
-    public double chanceOfGetting() {
-        return (double) 1 / possiblilities.size();
+    public double chanceOfGetting(T element) {
+        int occurrences = Collections.frequency(possiblilities, element);
+
+        return (double) occurrences * 1 / possiblilities.size();
     }
 
-    public double chanceOfNotGetting() {
-        return 1.0 - chanceOfGetting();
+    public double chanceOfNotGetting(T element) {
+        return 1.0 - chanceOfGetting(element);
     }
 
     @Override
