@@ -12,6 +12,18 @@ class ProbabilityTest {
     }
 
     @Test
+    void shouldReturnTheDeMorgansLow() {
+        try {
+            Probability probability = Probability.createProbability(0.5);
+
+            assertEquals(Probability.createProbability(0.75), probability.deMorgansLaw());
+        } catch (InvalidProbabilityException e) {
+            assertEquals(e.getMessage(), "Invalid Probability");
+        }
+
+    }
+
+    @Test
     void shouldReturnTheProbabilityOfGettingAtLeastOne() {
         try {
             Probability probability = Probability.createProbability(0.5);
@@ -19,6 +31,5 @@ class ProbabilityTest {
         } catch (InvalidProbabilityException e) {
             assertEquals(e.getMessage(), "Invalid Probability");
         }
-
     }
 }

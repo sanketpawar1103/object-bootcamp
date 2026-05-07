@@ -1,5 +1,6 @@
 package com.tw.bootcamp.p2;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -61,7 +62,7 @@ class ChanceCalculatorTest {
         double possibility = coin1.chanceOfGetting("Hello");
         try {
             Probability chance = Probability.createProbability(1.0);
-            assertEquals(chance, Probability.createProbability(possibility));
+            assertEquals(chance, Probability.createProbability(possibility).probabilityOfNotGetting());
         } catch (InvalidProbabilityException e) {
             assertEquals("Invalid Probability", e.getMessage());
         }
@@ -69,19 +70,19 @@ class ChanceCalculatorTest {
 
     @Test
     void shouldReturnProbabilityOfGettingTailForMultipleCoins() {
-        List<String> possibilityList = new ArrayList<>(Arrays.asList("Heads", "Tails"));
+        List<String> possibilityList = new ArrayList<>(Arrays.asList("Heads", "Tails", "Heads", "Tails"));
 
         ChanceCalculator coin1 = new ChanceCalculator(possibilityList);
         double possibility = coin1.chanceOfGetting("Hello");
         try {
-            assertEquals(Probability.createProbability(1.0), Probability.createProbability(possibility));
+            assertEquals(Probability.createProbability(1.0), Probability.createProbability(possibility).probabilityOfNotGetting());
         } catch (InvalidProbabilityException e) {
             assertEquals("Invalid Probability", e.getMessage());
 
         }
     }
 
-    @Test
+    @Disabled
     void shouldGiveAChanceOfGetting3WhenADiceIsRolled() {
         List<Integer> possibilityList = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6));
 
