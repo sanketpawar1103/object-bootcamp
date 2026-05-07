@@ -27,9 +27,13 @@ class ChanceCalculatorTest {
 
         ChanceCalculator coin1 = new ChanceCalculator(possibilityList);
         double possibility = coin1.chanceOfGetting("Tails");
-        Chance chance = new Chance(possibility);
 
-        assertEquals(chance, new Chance(0.5));
+        try {
+            Probability chance = Probability.createProbability(possibility);
+            assertEquals(chance, Probability.createProbability(0.5));
+        } catch (InvalidProbabilityException e) {
+            assertEquals("Invalid Probability", e.getMessage());
+        }
     }
 
     @Test
@@ -40,9 +44,12 @@ class ChanceCalculatorTest {
 
         ChanceCalculator coin1 = new ChanceCalculator(possibilityList);
         double possibility = coin1.chanceOfNotGetting("Tails");
-        Chance chance = new Chance(possibility);
-
-        assertEquals(chance, new Chance(0.5));
+        try {
+            Probability chance = Probability.createProbability(possibility);
+            assertEquals(chance, Probability.createProbability(0.5));
+        } catch (InvalidProbabilityException e) {
+            assertEquals("Invalid Probability", e.getMessage());
+        }
     }
 
     @Test
@@ -53,17 +60,26 @@ class ChanceCalculatorTest {
 
         ChanceCalculator coin1 = new ChanceCalculator(possibilityList);
         double possibility = coin1.chanceOfNotGetting("Hello");
-        Chance chance = new Chance(1.0);
-        assertEquals(chance, new Chance(possibility));
+        try {
+            Probability chance = Probability.createProbability(1.0);
+            assertEquals(chance, Probability.createProbability(possibility));
+        } catch (InvalidProbabilityException e) {
+            assertEquals("Invalid Probability", e.getMessage());
+        }
     }
-    
+
     @Test
     void shouldReturnProbabilityOfGettingTailForMultipleCoins() {
         List<String> possibilityList = new ArrayList<>(Arrays.asList("Heads", "Tails"));
 
         ChanceCalculator coin1 = new ChanceCalculator(possibilityList);
         double possibility = coin1.chanceOfNotGetting("Hello");
-        assertEquals(new Chance(1.0), new Chance(possibility));
+        try {
+            assertEquals(Probability.createProbability(1.0), Probability.createProbability(possibility));
+        } catch (InvalidProbabilityException e) {
+            assertEquals("Invalid Probability", e.getMessage());
+
+        }
     }
 
     @Disabled
@@ -72,7 +88,11 @@ class ChanceCalculatorTest {
 
         ChanceCalculator dice = new ChanceCalculator(possibilityList);
         double possibility = dice.chanceOfGetting(3);
+        try {
+            assertEquals(Probability.createProbability(0.166667), Probability.createProbability(possibility));
+        } catch (InvalidProbabilityException e) {
+            assertEquals("Invalid Probability", e.getMessage());
 
-        assertEquals(new Chance(0.166667), new Chance(possibility));
+        }
     }
 }

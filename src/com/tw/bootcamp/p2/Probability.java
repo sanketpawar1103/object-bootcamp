@@ -2,17 +2,25 @@ package com.tw.bootcamp.p2;
 
 import java.util.Objects;
 
-public class Chance {
+public class Probability {
 
     private final double probability;
 
-    public Chance(double decimal) {
+    private Probability(double decimal) {
         this.probability = decimal;
+    }
+
+    public static Probability createProbability(double probability) throws InvalidProbabilityException {
+        if (probability > 1.0) {
+            throw new InvalidProbabilityException("Invalid Probability");
+        }
+
+        return new Probability(probability);
     }
 
     @Override
     public boolean equals(Object o) {
-        if (!(o instanceof Chance chance)) return false;
+        if (!(o instanceof Probability chance)) return false;
         return Double.compare(probability, chance.probability) == 0;
     }
 
