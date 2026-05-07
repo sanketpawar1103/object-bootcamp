@@ -18,4 +18,11 @@ class RectangleDimensionTest {
 
         assertEquals(rectangleDimension1, rectangleDimension2);
     }
+
+    @Test
+    void shouldCalculatePerimeter() {
+        RectangleDimension rectangleDimension1 = new RectangleDimension(4, 5);
+
+        assertEquals(18, rectangleDimension1.perimeter());
+    }
 }

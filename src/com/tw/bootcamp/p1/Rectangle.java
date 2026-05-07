@@ -25,4 +25,8 @@ public class Rectangle {
     public int calculateArea() {
         return rectangleDimension.area();
     }
+
+        public int calculatePerimeter() {
+        return rectangleDimension.perimeter();
+    }
 }
