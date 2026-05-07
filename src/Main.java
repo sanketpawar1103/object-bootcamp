@@ -1,4 +1,5 @@
 import com.tw.bootcamp.p1.Rectangle;
+import com.tw.bootcamp.p2.Coin;
 
 public class Main {
     static void main() {
