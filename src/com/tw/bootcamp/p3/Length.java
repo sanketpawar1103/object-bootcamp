@@ -28,4 +28,10 @@ public class Length {
     public int hashCode() {
         return Objects.hash(unit, length);
     }
+
+    public Length add(Length inchLength2) {
+        double addedLength =  inchLength2.length + length;
+
+        return new Length(unit, addedLength);
+    }
 }

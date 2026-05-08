@@ -34,4 +34,12 @@ class LengthTest {
     void shouldThrowExceptionForNegativeLength() {
         assertThrows(NegativeMagnitudeException.class, () -> Length.createLength(LengthUnit.CM, -10));
     }
+
+    @Test
+    void shouldAddTwoInchesAndReturnTheNewLength() throws NegativeMagnitudeException {
+        Length inchLength1 = Length.createLength(LengthUnit.INCH, 2);
+        Length inchLength2 = Length.createLength(LengthUnit.INCH, 2);
+
+        assertEquals(inchLength1.add(inchLength2), Length.createLength(LengthUnit.INCH, 4));
+    }
 }
