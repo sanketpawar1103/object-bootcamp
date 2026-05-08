@@ -1,4 +1,5 @@
 import com.tw.bootcamp.p1.Rectangle;
+import com.tw.bootcamp.p3.Inch;
 
 public class Main {
     static void main() {
@@ -9,6 +10,5 @@ public class Main {
         System.out.println(rectangle.calculatePerimeter());
         System.out.println(square.calculatePerimeter());
         System.out.println(square.calculateArea());
-
     }
 }
