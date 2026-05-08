@@ -43,4 +43,13 @@ class LengthTest {
 
         assertEquals(twoInch.add(threeInch), fiveInch);
     }
+
+    @Test
+    void shouldAddAnyTwoUnitsAndReturnTheNewLengthInInch() throws NegativeMagnitudeException {
+        Length twoInch = Length.createLength(LengthUnit.INCH, 2);
+        Length twoAndHalfCm = Length.createLength(LengthUnit.CM, 2.5);
+        Length threeInch = Length.createLength(LengthUnit.INCH, 3);
+
+        assertEquals(twoInch.add(twoAndHalfCm), threeInch);
+    }
 }
