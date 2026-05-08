@@ -2,13 +2,13 @@ package com.tw.bootcamp.p3;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 class InchTest {
     @Test
-    void shouldCreateTheInchesWithTheValues() {
-        Inch inch = new Inch(12);
-        Feet feet = new Feet(1);
-        assertTrue(feet.compare(inch));
+    void shouldCompareInchesToInches() {
+        Inch inch = new Inch(1);
+        Inch inch1 = new Inch(2);
+        assertFalse(inch1.equals(inch));
     }
 }
