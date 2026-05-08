@@ -30,10 +30,10 @@ public class Probability {
     }
 
     public Probability atLeastOnce() {
-        Probability orProbability = or(not());
-        Probability andProbability = and(not());
+        double orProbability = or(not()).probabilityValue;
+        double andProbability = and(not()).probabilityValue;
 
-        return new Probability(orProbability.probabilityValue - andProbability.probabilityValue);
+        return new Probability(orProbability - andProbability);
     }
 
     public Probability deMorgansLaw() {
