@@ -4,33 +4,33 @@ import java.util.Objects;
 
 public class Length {
     private final LengthUnit unit;
-    private final double length;
+    private final double magnitude;
 
-    private Length(LengthUnit unit, double length) {
+    private Length(LengthUnit unit, double magnitude) {
         this.unit = unit;
-        this.length = length;
+        this.magnitude = magnitude;
     }
 
-    public static Length createLength(LengthUnit unit, double length) throws NegativeMagnitudeException {
-        if (length < 0) {
+    public static Length createLength(LengthUnit unit, double magnitude) throws NegativeMagnitudeException {
+        if (magnitude < 0) {
             throw new NegativeMagnitudeException("Invalid length parameter");
         }
-        return new Length(unit, length);
+        return new Length(unit, magnitude);
     }
 
     @Override
     public boolean equals(Object o) {
-        if (!(o instanceof Length length1)) return false;
-        return Double.compare(unit.toBase(length), length1.unit.toBase(length1.length)) == 0;
+        if (!(o instanceof Length length)) return false;
+        return Double.compare(unit.toBase(magnitude), length.unit.toBase(length.magnitude)) == 0;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(unit, length);
+        return Objects.hash(unit, magnitude);
     }
 
     public Length add(Length inchLength2) {
-        double addedLength =  inchLength2.length + length;
+        double addedLength =  inchLength2.magnitude + magnitude;
 
         return new Length(unit, addedLength);
     }

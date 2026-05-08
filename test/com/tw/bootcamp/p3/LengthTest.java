@@ -8,26 +8,26 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 class LengthTest {
     @Test
     void shouldCompareFeetWithInch() throws NegativeMagnitudeException {
-        Length length = Length.createLength(LengthUnit.FEET, 1.0);
-        Length length1 = Length.createLength(LengthUnit.INCH, 12);
+        Length lengthInFeet = Length.createLength(LengthUnit.FEET, 1.0);
+        Length lengthInInch = Length.createLength(LengthUnit.INCH, 12);
 
-        assertEquals(length, length1);
+        assertEquals(lengthInFeet, lengthInInch);
     }
 
     @Test
     void shouldCompareInchWithCm() throws NegativeMagnitudeException {
-        Length length = Length.createLength(LengthUnit.INCH, 1.0);
-        Length length1 = Length.createLength(LengthUnit.CM, 2.5);
+        Length lengthInInch = Length.createLength(LengthUnit.INCH, 1.0);
+        Length lengthInCm = Length.createLength(LengthUnit.CM, 2.5);
 
-        assertEquals(length, length1);
+        assertEquals(lengthInInch, lengthInCm);
     }
 
     @Test
     void shouldCompareCmWithMM() throws NegativeMagnitudeException {
-        Length length = Length.createLength(LengthUnit.CM, 1.0);
-        Length length1 = Length.createLength(LengthUnit.MM, 10.0);
+        Length lengthInCm = Length.createLength(LengthUnit.CM, 1.0);
+        Length lengthImMm = Length.createLength(LengthUnit.MM, 10.0);
 
-        assertEquals(length, length1);
+        assertEquals(lengthInCm, lengthImMm);
     }
 
     @Test
@@ -37,9 +37,10 @@ class LengthTest {
 
     @Test
     void shouldAddTwoInchesAndReturnTheNewLength() throws NegativeMagnitudeException {
-        Length inchLength1 = Length.createLength(LengthUnit.INCH, 2);
-        Length inchLength2 = Length.createLength(LengthUnit.INCH, 2);
+        Length twoInch = Length.createLength(LengthUnit.INCH, 2);
+        Length threeInch = Length.createLength(LengthUnit.INCH, 3);
+        Length fiveInch = Length.createLength(LengthUnit.INCH, 5);
 
-        assertEquals(inchLength1.add(inchLength2), Length.createLength(LengthUnit.INCH, 4));
+        assertEquals(twoInch.add(threeInch), fiveInch);
     }
 }
