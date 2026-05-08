@@ -2,7 +2,7 @@ package com.tw.bootcamp.p3;
 
 import java.util.Objects;
 
-public class Length {
+public class Length implements UnitAdder<Length> {
     private final LengthUnit unit;
     private final double magnitude;
 
@@ -22,12 +22,13 @@ public class Length {
         return magnitudeInCm / (2.5);
     }
 
-    public Length add(Length length) {
+    @Override
+    public Length add(Length length) throws NegativeMagnitudeException {
         double baseMagnitude = length.unit.toBase(length.magnitude);
         double baseMagnitudeOfThis = unit.toBase(magnitude);
         double addedLength = convertToInch(baseMagnitude + baseMagnitudeOfThis);
 
-        return new Length(LengthUnit.INCH, addedLength);
+        return createLength(LengthUnit.INCH, addedLength);
     }
 
     @Override

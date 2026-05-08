@@ -2,7 +2,7 @@ package com.tw.bootcamp.p3;
 
 import java.util.Objects;
 
-public class Volume {
+public class Volume implements UnitAdder<Volume> {
     private final VolumeUnit unit;
     private final double magnitude;
 
@@ -18,12 +18,12 @@ public class Volume {
         return new Volume(unit, magnitude);
     }
 
-    public Volume add(Volume volume) {
+    public Volume add(Volume volume) throws NegativeMagnitudeException {
         double baseMagnitude = volume.unit.toBase(volume.magnitude);
         double baseMagnitudeOfThis = unit.toBase(magnitude);
         double addedVolume = baseMagnitude + baseMagnitudeOfThis;
 
-        return new Volume(VolumeUnit.LITER, addedVolume);
+        return createVolume(VolumeUnit.LITER, addedVolume);
     }
 
     @Override
