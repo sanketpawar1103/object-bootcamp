@@ -18,10 +18,18 @@ public class Volume {
         return new Volume(unit, magnitude);
     }
 
+    public Volume add(Volume volume) {
+        double baseMagnitude = volume.unit.toBase(volume.magnitude);
+        double baseMagnitudeOfThis = unit.toBase(magnitude);
+        double addedVolume = baseMagnitude + baseMagnitudeOfThis;
+
+        return new Volume(VolumeUnit.LITER, addedVolume);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (!(o instanceof Volume volume)) return false;
-        return  (unit.toBase(magnitude) - volume.unit.toBase(volume.magnitude)) == 0.0;
+        return  Math.abs(unit.toBase(magnitude) - volume.unit.toBase(volume.magnitude)) < 0.01;
     }
 
     @Override

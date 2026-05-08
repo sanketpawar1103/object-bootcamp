@@ -18,4 +18,12 @@ class VolumeTest {
     void shouldThrowErrorForNegativeVolume()  {
         assertThrows(NegativeMagnitudeException.class, () -> Volume.createVolume(VolumeUnit.LITER, -1));
     }
+
+    @Test
+    void shouldAddAnyTwoVolumeUnitsAndReturnAdditionInLiters() throws NegativeMagnitudeException {
+        Volume oneGallon = Volume.createVolume(VolumeUnit.GALLON, 1);
+        Volume oneLiter = Volume.createVolume(VolumeUnit.LITER, 1);
+
+        assertEquals(oneGallon.add(oneLiter), Volume.createVolume(VolumeUnit.LITER, 4.78));
+    }
 }
