@@ -1,5 +1,4 @@
 import com.tw.bootcamp.p1.Rectangle;
-import com.tw.bootcamp.p3.Inch;
 
 public class Main {
     static void main() {
