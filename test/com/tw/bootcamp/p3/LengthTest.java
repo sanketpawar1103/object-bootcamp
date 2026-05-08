@@ -3,29 +3,35 @@ package com.tw.bootcamp.p3;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class LengthTest {
     @Test
-    void shouldCompareFeetWithInch() {
-        Length length = new Length(Unit.FEET, 1.0);
-        Length length1 = new Length(Unit.INCH, 12);
+    void shouldCompareFeetWithInch() throws NegativeMagnitudeException {
+        Length length = Length.createLength(LengthUnit.FEET, 1.0);
+        Length length1 = Length.createLength(LengthUnit.INCH, 12);
 
         assertEquals(length, length1);
     }
 
     @Test
-    void shouldCompareInchWithCm() {
-        Length length = new Length(Unit.INCH, 1.0);
-        Length length1 = new Length(Unit.CM, 2.5);
+    void shouldCompareInchWithCm() throws NegativeMagnitudeException {
+        Length length = Length.createLength(LengthUnit.INCH, 1.0);
+        Length length1 = Length.createLength(LengthUnit.CM, 2.5);
 
         assertEquals(length, length1);
     }
 
     @Test
-    void shouldCompareCmWithMM() {
-        Length length = new Length(Unit.CM, 1.0);
-        Length length1 = new Length(Unit.MM, 10.0);
+    void shouldCompareCmWithMM() throws NegativeMagnitudeException {
+        Length length = Length.createLength(LengthUnit.CM, 1.0);
+        Length length1 = Length.createLength(LengthUnit.MM, 10.0);
 
         assertEquals(length, length1);
+    }
+
+    @Test
+    void shouldThrowExceptionForNegativeLength() {
+        assertThrows(NegativeMagnitudeException.class, () -> Length.createLength(LengthUnit.CM, -10));
     }
 }

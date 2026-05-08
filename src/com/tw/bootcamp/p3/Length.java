@@ -3,19 +3,19 @@ package com.tw.bootcamp.p3;
 import java.util.Objects;
 
 public class Length {
-    private final Unit unit;
+    private final LengthUnit unit;
     private final double length;
 
-    public Length(Unit unit, double length) {
+    private Length(LengthUnit unit, double length) {
         this.unit = unit;
         this.length = length;
     }
 
-    public boolean compare(Length anotherLength) {
-        double inCm = unit.toBase(length);
-        double anotherLengthInCm = anotherLength.unit.toBase(anotherLength.length);
-
-        return inCm == anotherLengthInCm;
+    public static Length createLength(LengthUnit unit, double length) throws NegativeMagnitudeException {
+        if (length < 0) {
+            throw new NegativeMagnitudeException("Invalid length parameter");
+        }
+        return new Length(unit, length);
     }
 
     @Override
