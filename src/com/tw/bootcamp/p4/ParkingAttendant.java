@@ -12,7 +12,7 @@ public class ParkingAttendant {
     public static ParkingAttendant createParkingAttendant(Map<Integer, ParkingLot> parkingCatalogue) {
         return new ParkingAttendant(parkingCatalogue);
     }
-    
+
     public int park(int parkingLotId) {
         ParkingLot parkingLot = parkingCatalogue.get(parkingLotId);
         return parkingLot.park();
