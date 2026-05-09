@@ -16,4 +16,13 @@ class BagTest {
         Bag bag = new Bag(0);
         assertFalse(bag.add(Balls.RED));
     }
+
+    @Test
+    void setLimitToTheGreenColoredBall() {
+        Bag bag = new Bag(12);
+        bag.add(Balls.GREEN);
+        bag.add(Balls.GREEN);
+        assertTrue(bag.add(Balls.GREEN));
+        assertFalse(bag.add(Balls.GREEN));
+    }
 }

@@ -14,12 +14,15 @@ public class Bag {
     }
 
     public boolean add(Balls ball) {
-        if (noOfBallsInTheBag >= capacity) {
+        Integer noOfBalls = ballsInventory.getOrDefault(ball, 0);
+
+        if (ball.isOverflow(noOfBalls) || noOfBallsInTheBag >= capacity) {
             return false;
         }
 
-        ballsInventory.put(ball, ballsInventory.getOrDefault(ball, 0) + 1);
+        ballsInventory.put(ball, noOfBalls + 1);
         noOfBallsInTheBag++;
+
         return true;
     }
 }
