@@ -17,14 +17,24 @@ public class Bag {
         Integer noOfBalls = ballsInventory.getOrDefault(color,0);
         Integer greenCount = ballsInventory.getOrDefault(Color.GREEN, 0);
 
-        if ( isGreenOverFlow(color, greenCount) || (noOfBallsInTheBag >= capacity)) return false;
+        if (isGreenOverFlow(color, greenCount) || (noOfBallsInTheBag >= capacity)) return false;
 
         if(isRedOverFlow(color, noOfBalls, greenCount)) return false;
+
+        if (isYellowOverFlow(color)) return false;
 
         ballsInventory.put(color, noOfBalls + 1);
         noOfBallsInTheBag++;
 
         return true;
+    }
+
+    private boolean isYellowOverFlow(Color color) {
+        double fortyPercentOfTotalBalls = noOfBallsInTheBag * (double) (40 / 100);
+        Integer yellowBalls = ballsInventory.getOrDefault(color, 0);
+        boolean isYellowMoreThanFortyPercent = fortyPercentOfTotalBalls > yellowBalls;
+
+        return color == Color.YELLOW && isYellowMoreThanFortyPercent;
     }
 
     private static boolean isRedOverFlow(Color color, Integer noOfBalls, Integer greenCount) {
