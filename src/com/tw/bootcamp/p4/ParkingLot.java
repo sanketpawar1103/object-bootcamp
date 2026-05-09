@@ -1,21 +1,23 @@
 package com.tw.bootcamp.p4;
 
 public class ParkingLot {
-    private int garage;
+    private final int parkingLotId;
+    private int parkingSlots;
 
-    private ParkingLot(int totalParkingSlots) {
-        this.garage = totalParkingSlots;
+    private ParkingLot(int parkingLotId, int totalParkingSlots) {
+        this.parkingLotId = parkingLotId;
+        this.parkingSlots = totalParkingSlots;
     }
 
-    public static ParkingLot createParkingLot(int totalParkingSlots) {
-        return new ParkingLot(totalParkingSlots);
+    public static ParkingLot createParkingLot(int parkingId, int totalParkingSlots) {
+        return new ParkingLot(parkingId, totalParkingSlots);
     }
-    
-    public int parkCar() {
-        return garage--;
+
+    public int park() {
+        return parkingSlots--;
     }
 
     public boolean isFull() {
-        return garage <= 0;
+        return parkingSlots <= 0;
     }
 }
