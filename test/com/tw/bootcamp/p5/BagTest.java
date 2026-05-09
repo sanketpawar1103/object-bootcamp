@@ -8,6 +8,12 @@ class BagTest {
     @Test
     void shouldAddTheBallInTheBag() {
         Bag bag = new Bag(12);
-        assertTrue(bag.add());
+        assertTrue(bag.add(Balls.RED));
+    }
+
+    @Test
+    void shouldRejectTheBallAdditionInToTheBagOnTheCapacityOverflow() {
+        Bag bag = new Bag(0);
+        assertFalse(bag.add(Balls.RED));
     }
 }
